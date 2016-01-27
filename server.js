@@ -70,6 +70,10 @@ app.delete('/api/bultens/:bulten_id', function(req, res) {
             });
         });
     });
+
+app.get('*', function(req, res) {
+        res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    });
     // listen (start app with node server.js) ======================================
     app.listen(8081);
     console.log("App listening on port 8081");
