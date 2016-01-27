@@ -19,8 +19,43 @@
     app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
     app.use(methodOverride());
 
+    var Bulten = mongoose.model('Bulten', {bultenAdi: String, bultenIcerik: String});
+
+app.get('/api/bultens', function(req, res) {
+
+        // use mongoose to get all bultens in the database
+        Bulten.find(function(err, bultens) {
+
+            // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+            if (err)
+                res.send(err)
+
+            res.json(bultens); // return all bultens in JSON format
+        });
+    });
+
+app.post('/api/bultens', function(req, res) {
+
+        // create a todo, information comes from AJAX request from Angular
+        Bulten.create({
+            bultenAdi : req.body.bultenAdi,
+	    bultenIcerik: req.body.bultenIcerik
+            sent : false
+        }, function(err, todo) {
+            if (err)
+                res.send(err);
+
+            // get and return all the bultens after you create another
+            Bulten.find(function(err, bultens) {
+                if (err)
+                    res.send(err)
+                res.json(bultens);
+            });
+        });
+
+    });
     // listen (start app with node server.js) ======================================
-    app.listen(8080);
-    console.log("App listening on port 8080");
+    app.listen(8081);
+    console.log("App listening on port 8081");
 
 
