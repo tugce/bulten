@@ -19,7 +19,7 @@
     app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
     app.use(methodOverride());
 
-    var Bulten = mongoose.model('Bulten', {bultenAdi: String, bultenIcerik: String});
+    var Bulten = mongoose.model('Bulten', {bultenAdi: String, bultenIcerik: String, sent: Boolean});
 
 app.get('/api/bultens', function(req, res) {
 
@@ -39,8 +39,8 @@ app.post('/api/bultens', function(req, res) {
         // create a todo, information comes from AJAX request from Angular
         Bulten.create({
             bultenAdi : req.body.bultenAdi,
-	    bultenIcerik: req.body.bultenIcerik
-            sent : false
+	    bultenIcerik: req.body.bultenIcerik,
+	    sent: false
         }, function(err, todo) {
             if (err)
                 res.send(err);

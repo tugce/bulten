@@ -27,7 +27,7 @@ function mainController($scope, $http) {
 
     // delete a bulten
     $scope.deleteBulten = function(id) {
-        $http.delete('/api/todos/' + id)
+        $http.delete('/api/bultens/' + id)
             .success(function(data) {
                 $scope.bultens = data;
                 console.log(data);

@@ -38,7 +38,7 @@
                 <!-- LOOP OVER THE BULTENS IN $scope.bultens -->
                 <div class="checkbox" ng-repeat="bulten in bultens">
                     <label>
-                        <input type="checkbox" ng-click="deleteBulten(bulten._id)"> {{ bulten.text }}
+                        <input type="checkbox" ng-click="deleteBulten(bulten._id)"> {{ bulten.bultenAdi }}
                     </label>
                 </div>
 
@@ -50,7 +50,8 @@
                     <div class="form-group">
 
                         <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                        <input type="text" class="form-control input-lg text-center" placeholder="Bulten icerik" ng-model="formData.text">
+                        <input type="text" class="form-control input-lg text-center" placeholder="Bulten adi" ng-model="formData.bultenAdi">
+			<input type="text" class="form-control input-lg text-center" placeholder="Bulten icerik" ng-model="formData.bultenIcerik">
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-lg" ng-click="createBulten()">Add</button>
