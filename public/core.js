@@ -25,6 +25,19 @@ function mainController($scope, $http) {
             });
     };
 
+    $scope.sendMail = function() {
+        $http.post('/api/sendMail', $scope.formData)
+            .success(function(data) {
+                $scope.formData = {}; // clear the form so our user is ready to enter another
+                $scope.bultens = data;
+                console.log(data);
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+    };
+
+
     // delete a bulten
     $scope.deleteBulten = function(id) {
         $http.delete('/api/bultens/' + id)

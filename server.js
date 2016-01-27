@@ -20,7 +20,7 @@
     app.use(methodOverride());
 
     var Bulten = mongoose.model('Bulten', {bultenAdi: String, bultenIcerik: String, sent: Boolean});
-
+    var List = mongoose.model('List', {toList: String, ccList: String, bccList: String, _bulten: {type: mongoose.Schema.Types.ObjectId, ref: Bulten}});
 app.get('/api/bultens', function(req, res) {
 
         // use mongoose to get all bultens in the database
