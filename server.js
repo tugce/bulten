@@ -54,6 +54,22 @@ app.post('/api/bultens', function(req, res) {
         });
 
     });
+
+app.delete('/api/bultens/:bulten_id', function(req, res) {
+        Bulten.remove({
+            _id : req.params.bulten_id
+        }, function(err, todo) {
+            if (err)
+                res.send(err);
+
+            // get and return all the bultens after you create another
+            Bulten.find(function(err, bultens) {
+                if (err)
+                    res.send(err)
+                res.json(bultens);
+            });
+        });
+    });
     // listen (start app with node server.js) ======================================
     app.listen(8081);
     console.log("App listening on port 8081");
