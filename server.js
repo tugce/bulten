@@ -10,7 +10,7 @@
 
     // configuration =================
 
-    mongoose.connect('mongodb://heroku_rvkw8x43:9eov707256m7gikgjo0kkhoa56@ds055772.mongolab.com:55772/heroku_rvkw8x43');     // connect to mongoDB database on modulus.io
+    mongoose.connect('mongodb://localhost/local');     // connect to mongoDB database on modulus.io
 
     app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
     app.use(morgan('dev'));                                         // log every request to the console
@@ -75,7 +75,7 @@ app.get('*', function(req, res) {
         res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
     });
     // listen (start app with node server.js) ======================================
-    //app.listen(8081);
+    app.listen(8081);
     console.log("App listening on port 8081");
 
 
